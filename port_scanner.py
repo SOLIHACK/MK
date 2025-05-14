@@ -8,6 +8,8 @@ def scan_ports(target, ports=range(1, 1025)):
                 sock.settimeout(0.5)
                 if sock.connect_ex((target, port)) == 0:
                     open_ports.append(port)
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"[red]Error scanning port {port} on {target}: {e}[/red]")
+    if not open_ports:
+        print(f"[yellow]No open ports found on {target}.[/yellow]")
     return open_ports

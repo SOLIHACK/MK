@@ -13,5 +13,7 @@ def find_subdomains(domain, wordlist_file="subdomains.txt"):
                 except socket.gaierror:
                     pass
     except FileNotFoundError:
-        print("[red]Wordlist file not found![/red]")
+        print("[red]Wordlist file not found! Please ensure 'subdomains.txt' exists.[/red]")
+    if not subdomains:
+        print("[yellow]No subdomains were found. Ensure your wordlist is correct.[/yellow]")
     return subdomains
